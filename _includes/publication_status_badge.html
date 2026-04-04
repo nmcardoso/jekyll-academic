@@ -1,0 +1,64 @@
+{% assign p = include.publication %}
+{% assign base_class = "badge ms-1 rounded-pill border cursor-default" %}
+
+{% assign jcr = site.data.lattes_jcr[p.venue] %}
+{% if jcr %}
+  <span 
+    class="{{ base_class }} bg-secondary-subtle border-secondary-subtle text-secondary-emphasis"
+    data-bs-toggle="tooltip"
+    data-bs-title="Clarivate &trade; Journal Citation Report (JCR) Impact Factor (JIF) {{ jcr.year }}">
+    JIF: {{ jcr.jif }}
+  </span>
+{% endif %}
+
+{% case p.status %}
+  {% when "prep" %}
+    <span 
+      class="{{ base_class }} bg-warning-subtle border-warning-subtle text-warning-emphasis"
+      data-bs-toggle="tooltip"
+      data-bs-title="Work in progress">
+      in preparation
+    </span>
+  {% when "submitted" %}
+    <span 
+      class="{{ base_class}} bg-info-subtle border-info-subtle text-info-emphasis"
+      data-bs-toggle="tooltip"
+      data-bs-title="Article in peer-review proccess">
+      submitted <i class="fas fa-paper-plane fa-sm"></i>
+    </span>
+  {% when "accepted" %}
+    <span 
+      class="{{ base_class }} bg-success-subtle border-success-subtle text-success-emphasis"
+      data-bs-toggle="tooltip"
+      data-bs-title="Article accepted for publication">
+      accepted <i class="fas fa-check-circle fa-sm"></i>
+    </span>
+  {% else %}
+    {% assign cite = site.data.lattes_citation[p.doi] %}
+    {% if cite.wos %}
+      <span 
+        class="{{ base_class }} bg-primary-subtle border-primary-subtle text-primary-emphasis"
+        data-bs-toggle="tooltip"
+        data-bs-title="Citations in Web of Science database (updated {{ cite.update_date | date_to_long_string }})">
+        WoS: {{ cite.wos }}
+      </span>
+    {% endif %}
+    {% if cite.scopus %}
+      <span 
+        class="{{ base_class }} bg-primary-subtle border-primary-subtle text-primary-emphasis"
+        data-bs-toggle="tooltip"
+        data-bs-title="Citations in Scopus database (updated {{ cite.update_date | date_to_long_string }})">
+        Scopus: {{ cite.scopus }}
+      </span>
+    {% endif %}
+    
+    {% assign cite = site.data.openalex_citation[p.doi] %}
+    {% if cite.count %}
+      <span 
+        class="{{ base_class }} bg-primary-subtle border-primary-subtle text-primary-emphasis"
+        data-bs-toggle="tooltip"
+        data-bs-title="Citations in OpenAlex database (updated {{ cite.update_date | date_to_long_string }})">
+        OpenAlex: {{ cite.count }}
+      </span>
+    {% endif %}
+{% endcase %}

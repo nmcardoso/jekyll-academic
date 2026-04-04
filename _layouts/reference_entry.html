@@ -1,0 +1,19 @@
+---
+---
+{% if entry.doi %}
+  <a 
+    class="link-offset-2-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" 
+    target="_blank" 
+    href="https://doi.org/{{entry.doi}}">
+    {{ reference }}
+  </a>
+{% elsif entry.url %}
+  <a 
+    class="link-offset-2-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" 
+    target="_blank" 
+    href="{{entry.url}}">
+    {{ reference }}
+  </a>
+{% else %}
+  {{ reference }}
+{% endif %}

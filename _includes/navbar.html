@@ -1,0 +1,37 @@
+<nav class="navbar navbar-light bg-light static-top navbar-expand-lg py-3 border-bottom border-2 border-light-subtle">
+  <div class="container">
+    <a class="navbar-brand w-600" href="/">
+      <!-- <img src="/assets/img/iag_logo_black.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+      {{ site.title }}
+    </a>
+    <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        {% if site.data.navigation %}
+          {% for item in site.data.navigation %}
+          <li class="nav-item">
+            <a 
+              href="{{ item.link }}"
+              class="nav-link
+                {% if (item.link == page.url) or (item.name == 'Blog' and page.url contains '/blog/') %} 
+                  active
+                {% endif %}">
+                {{ item.name }}
+            </a>
+          </li>
+          {% endfor %}
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

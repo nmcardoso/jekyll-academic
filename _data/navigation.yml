@@ -1,0 +1,12 @@
+- name: "Home"
+  link: /
+- name: Landing
+  link: /landing
+- name: "People"
+  link: /people
+- name: "Publications"
+  link: /publications
+- name: "Blog"
+  link: /blog
+- name: "News"
+  link: /news

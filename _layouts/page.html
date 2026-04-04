@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{% assign sidebar = page.sidebar | default: site.sidebar %}
+
+{% if page.image %}
+  {% include masterhead.html image=page.image title=page.title subtitle=page.subtitle %}
+{% endif %}
+
+
+{% if page.sidebar %}
+  <div class="container {% if page.fluid %}-fluid{% endif %}">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="sticky-top pt-3 d-none d-lg-block">
+          {% include profile_sidebar.html %}
+        </div>
+      </div>
+      <div class="col-12 col-lg-9 pt-3 pb-4">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+{% else %}
+  <div class="container{% if page.fluid %}-fluid{% endif %} {% unless page.no_padding %}py-3{% endunless %}">
+    {{ content }}
+  </div>
+{% endif %}

@@ -1,0 +1,9 @@
+---
+layout: page
+---
+
+{% unless page.image %}
+  <h2>{{ page.title | default: "Publications" }}</h2>
+{% endunless %}
+
+{% include publication_list.html %}

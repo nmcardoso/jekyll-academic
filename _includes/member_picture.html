@@ -1,0 +1,30 @@
+{% assign gh_user = include.member.github %}
+{% assign local_file = site.static_files | where: "profile_image", true | where: "basename", include.member.slug | first %}
+
+
+{% if local_file %}
+
+{% capture src %}
+{{ local_file.path }}
+{% endcapture %}
+
+{% elsif gh_user %}
+
+{% capture src %}
+https://github.com/{{ gh_user }}.png?size={{ include.size }}
+{% endcapture %}
+
+{% else %}
+
+{% assign hash = include.member.slug | MD5 %}
+{% capture src %}
+https://www.gravatar.com/avatar/{{ hash }}.jpg?s={{ include.size }}&d=identicon
+{% endcapture %}
+
+{% endif %}
+
+<img 
+  src="{{ src | strip }}" 
+  style="aspect-ratio: 1; object-fit: cover; border-radius: 50%;"
+  width="{{ include.size }}" />
+<!-- class="rounded-circle" -->

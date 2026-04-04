@@ -1,0 +1,18 @@
+{% if include.compact %}
+  <div class="font-sans mb-2">
+    <a class="btn btn-outline-primary" href="{{ include.url }}">
+      <i class="fa-solid fa-download me-1"></i>
+      <span>{{ include.name }}{% if include.filesize %} ({{ include.filesize }}){% endif %}</span>
+    </a>
+  </div>
+{% else %}
+  <div class="font-sans ms-2 mb-2">
+    {% if include.name %}
+      <i class="fa-regular fa-file"></i>
+      <span class="me-2">{{ include.name }}{% if include.filesize %} ({{ include.filesize }}){% endif %}</span>
+    {% endif %}
+    <a class="btn btn-outline-primary btn-sm" href="{{ include.url }}">
+      <i class="fa-solid fa-download me-1"></i> Download
+    </a>
+  </div>
+{% endif %}

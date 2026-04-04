@@ -1,0 +1,36 @@
+---
+layout: page
+---
+
+<div>
+  {% if site.data.member_roles %}
+    <!-- with site.data.member_roles -->
+    {% for role in site.data.member_roles %}
+      {% assign member_set = site.members | where: 'role', role.key %}
+      {% if role.key == site.members.default_role %}
+        {% assign unset_roles = site.members | where: 'role', empty %}
+        {% assign member_set = member_set | concat: unset_roles %}
+      {% endif %}
+      {% assign member_set = member_set | sort: 'name' %}
+      {% if member_set.size > 0 %}
+        <h2>{{ role.name }}</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-4 font-sans">
+          {% for member in member_set %}
+            {% unless member.draft %}
+              <div class="col">
+                <a 
+                  class="link-body-emphasis link-offset-2-hover link-underline link-underline-opacity-0 link-underline-opacity-100-hover d-flex" 
+                  href="{{ member.url | relative_url }}">
+                  <div class="d-inline-flex align-items-center">
+                    {% include member_picture.html member=member size=36 %}
+                    <span class="ps-2 fs-4">{{ member.name }}</span>
+                  </div>
+                </a>
+              </div>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>

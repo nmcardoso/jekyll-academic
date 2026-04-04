@@ -1,0 +1,214 @@
+# Welcome to Jekyll!
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+# Jekyll plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  # - jekyll-include-cache
+  - jekyll-gist
+  - jekyll-sass-converter
+  - jekyll-scholar
+  - jekyll-seo-tag
+  - jekyll-paginate-v2
+  - jekyll-archives
+incremental: false
+
+# Site settings
+title: Natanael.net
+locale: en
+name: Natanael M. Cardoso
+email: contact@natanael.net
+description: >- # >- means to ignore newlines until next key
+  Personal blog | Computer Engineering & Artificial Intelligence
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://natanael.net" # the base hostname & protocol for your site, e.g. http://example.com
+github_username: nmcardoso
+repository: nmcardoso/website
+timezone: America/Sao_Paulo
+social:
+  type: Person
+  name: Natanael M. Cardoso
+  links:
+    - https://linkedin.com/in/nmagcardoso
+livereload: true
+markdown: kramdown
+highlighter: rouge
+
+# teaser: ... (500x300)
+# logo: ...
+# og_image: /assets/images/site-logo.png
+# og_image_alt: "Site logo"
+masthead_title: Natanael.net
+breadcumbs: true
+date_format: "%B %-d, %Y"
+enable_copy_code_button: true
+sidebar: true
+search: true
+lunr:
+  search_within_pages: true
+  search_full_content: true
+dimensions_badge: true
+author:
+  name: N. M. Cardoso
+  avatar: https://github.com/nmcardoso.png?size=300
+  bio: Computer Engineer
+  location: São Paulo, SP, Brazil
+  email: contact@natanael.net
+  links:
+    - label: Lattes
+      icon: fa-solid fa-address-book
+      url: https://lattes.cnpq.br/2164167462832691
+    - label: ORCID
+      icon: fa-brands fa-orcid
+      url: https://orcid.org/0000-0002-2238-9665
+    - label: Google Scholar
+      icon: fa-brands fa-google-scholar
+      url: https://scholar.google.com/citations?hl=en&user=cGn84E0AAAAJ
+    - label: ResearcherID
+      icon: fa-solid fa-address-card
+      url: https://www.webofscience.com/wos/author/record/MFI-7970-2025
+    - label: Scopus
+      icon: fa-solid fa-book
+      url: https://www.scopus.com/authid/detail.uri?authorId=57223766399
+    - label: Github
+      icon: fa-brands fa-github
+      url: https://github.com/nmcardoso
+    - label: Gitlab
+      icon: fa-brands fa-gitlab
+      url: https://gitlab.com/nmcardoso
+    - label: Linkedin
+      icon: fa-brands fa-linkedin
+      url: https://linkedin.com/in/nmagcardoso
+
+
+# Collections setup
+collections_dir: content
+
+collections:
+  pages:
+    output: true
+    permalink: /:slug/
+  posts:
+    output: true
+    permalink: /blog/:year/:slug/
+  publications:
+    output: true
+    permalink: /publications/:slug/
+  members:
+    output: true
+    permalink: /people/:slug/
+  news:
+    output: true
+    permalink: /news/:year/:slug/
+  
+
+defaults:
+  # Pages
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: page
+  # Blog
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  # Publications
+  - scope:
+      path: ""
+      type: publications
+    values:
+      layout: publication
+  # Members
+  - scope:
+      path: ""
+      type: members
+    values:
+      layout: member
+      role: member
+      masterhead_profile: true
+  # News
+  - scope:
+      path: ""
+      type: news
+    values:
+      layout: post
+  - scope:
+      path: ""
+    values:
+      sidebar: true
+
+
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+
+
+members:
+  permalink: /people/
+
+
+
+scholar:
+  style: the-astrophysical-journal
+  locale: en
+
+  sort_by: none
+  order: ascending
+
+  source: ./_bibliography
+  bibliography: main.bib
+  bibliography_template: reference_entry
+
+  replace_strings: true
+  join_strings: true
+
+  # details_dir: bibliography
+  # details_layout: bibliography.html
+  # details_link: Details
+
+  query: "@*"
+
+
+# kramdown:
+#   syntax_highlighter_opts:
+#     line_numbers: true
+
+
+# paginate: 5
+# paginate_path: "/blog/page/:num/"
+
+pagination:
+  enabled: true
+  per_page: 5
+  collection: posts
+
+
+# https://github.com/mmistakes/minimal-mistakes/discussions/2033

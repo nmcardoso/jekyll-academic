@@ -1,0 +1,17 @@
+---
+layout: page
+collection: posts
+---
+
+<div class="row">
+  <h2 class="">{{ page.title }}</h2>
+  {% for post in paginator.posts %}
+    {% include post_entry_list.html post=post %}
+  {% endfor %}
+
+  {% if paginator.posts.size > 0 %}
+    {% include post_paginator.html paginator=paginator %}
+  {% else %}
+    <span>No posts</span>
+  {% endif %}
+</div>

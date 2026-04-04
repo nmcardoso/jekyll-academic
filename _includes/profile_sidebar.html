@@ -1,0 +1,32 @@
+<div class="text-center">
+  <img 
+    src="{{ site.author.avatar }}" 
+    style="aspect-ratio: 1;" 
+    class="border border-2 border-secondary-subtle object-fit-cover w-75 rounded-circle" />
+</div>
+
+<p class="fs-4 fw-bold text-body-secondary mt-2 mb-2">
+  {{ site.author.name }}
+</p>
+
+{% if site.author.bio %}
+  <p class="text-body-secondary mb-3">{{ site.author.bio }}</p>
+{% endif %}
+
+{% if site.author.location %}
+  <p class="mb-2 text-body-secondary">
+    <i class="fa-solid fa-location-dot"></i> {{ site.author.location }}
+  </p>
+{% endif %}
+
+{% for link in site.author.links %}
+  <p class="mb-2">
+    <i class="{{ link.icon }} text-body-secondary"></i>
+    <a ]
+      href="{{ link.url }}" 
+      target="_blank" 
+      class="link-secondary link-underline link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover">
+      {{ link.label }}
+    </a>
+  </p>
+{% endfor %}

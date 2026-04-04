@@ -1,0 +1,130 @@
+---
+layout: default
+---
+
+{% include masterhead.html %}
+
+<div class="container page-content pb-4">
+  <h1><i class="fa-regular fa-address-card fa-sm"></i> Personal Information</h1>
+
+  {% if page.affiliation %}
+    <div class="mt-2">
+      <i class="fa-solid fa-building-columns"></i> <b>Affiliation:</b> {{ page.affiliation }}
+    </div>
+  {% endif %}
+
+  {% if page.affiliations %}
+    {% for affiliation in page.affiliations %}
+      <div class="mt-2">
+        <i class="fa-solid fa-building-columns"></i> <b>Affiliation {{ forloop.index }}:</b> {{ affiliation }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if page.orcid %}
+  <div class="mt-2">
+    <i class="fa-brands fa-orcid"></i> <b>Orcid:</b> {{ page.orcid }}
+    <a href="https://orcid.org/{{ page.orcid }}" target="_blank" class="ms-1">
+      <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+    </a> 
+  </div>
+  {% endif %}
+
+  {% if page.scholar %}
+  <div class="mt-2">
+    <i class="fa-brands fa-google-scholar"></i> <b>Google Scholar:</b> {{ page.name }}
+    <a href="https://scholar.google.com/citations?hl=en&user={{ page.scholar }}" target="_blank" class="ms-1">
+      <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+    </a> 
+  </div>
+  {% endif %}
+
+  {% if page.lattes %}
+  <div class="mt-2">
+    <i class="fa-solid fa-user"></i> <b>Lattes:</b> {{ page.lattes }}
+    <a href="https://lattes.cnpq.br/{{ page.lattes }}" target="_blank" class="ms-1">
+      <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+    </a> 
+  </div>
+  {% endif %}
+
+  {% if page.researcherid %}
+  <div class="mt-2">
+    <i class="fa-solid fa-user"></i> <b>ResearcherID:</b> {{ page.researcherid }}
+    <a href="https://www.webofscience.com/wos/author/record/{{ page.researcherid }}" target="_blank" class="ms-1">
+      <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+    </a> 
+  </div>
+  {% endif %}
+
+  {% if page.scopus %}
+  <div class="mt-2">
+    <i class="fa-solid fa-user"></i> <b>Scopus:</b> {{ page.scopus }}
+    <a href="https://www.scopus.com/authid/detail.uri?authorId={{ page.scopus }}" target="_blank" class="ms-1">
+      <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+    </a> 
+  </div>
+  {% endif %}
+
+  {% if page.github %}
+  <div class="mt-2">
+    <i class="fa-brands fa-github"></i> <b>Github:</b> {{ page.github }}
+    <a href="https://github.com/{{ page.github }}" target="_blank" class="ms-1">
+      <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+    </a>
+  </div>
+  {% endif %}
+
+  {% if page.gitlab %}
+    <div class="mt-2">
+      <i class="fa-brands fa-gitlab"></i> <b>Gitlab:</b> {{ page.gitlab }}
+      <a href="https://gitlab.com/{{ page.gitlab }}" target="_blank" class="ms-1">
+        <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+      </a>
+    </div>
+  {% endif %}
+
+  {% if page.site %}
+  <div class="mt-2">
+    <i class="fa-solid fa-globe"></i> <b>Website:</b> {{ page.site }}
+    <a href="https://{{ page.site }}" target="_blank" class="ms-1">
+      <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+    </a> 
+  </div>
+  {% endif %}
+
+  {% if page.email %}
+  <div class="mt-2">
+    <i class="fa-regular fa-envelope"></i> <b>E-mail:</b> {{ page.email }}
+  </div>
+  {% endif %}
+
+
+
+
+
+  {% assign striped_content = page.content | strip | strip_html | strip_newlines %}
+  {% unless striped_content == empty %}
+    <div class="py-3">
+      <h1 id="bio"><i class="fa-regular fa-user fa-sm"></i> Bio</h1>
+      {{ content }}
+    </div>
+  {% endunless %}
+
+
+
+
+
+
+  <h1 id="publications"><i class="fa-regular fa-newspaper fa-sm"></i> Publications</h1>
+
+  {% assign filtered_publications = page.publications %}
+  {% if filtered_publications == nil %}
+    {% assign filtered_publications = '' | split: '' %}
+  {% endif %}
+
+  {% include publication_list.html publications=filtered_publications %}
+
+
+
+</div>

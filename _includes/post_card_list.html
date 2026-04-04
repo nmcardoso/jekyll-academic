@@ -1,0 +1,35 @@
+{% assign items = site.posts %}
+{% assign n = include.n | default: 3 | at_most: items.size %}
+{% assign max = include.max | default: 400 %}
+
+<div class="row row-cols-1 row-cols-md-{{ n }} g-3">
+  {% for item in items limit: n %}
+  <div class="col">
+      <div class="card h-100">
+        {% if item.image %}
+          <img src="{{ item.image }}" class="card-img-top" alt="post cover" />
+        {% endif %}
+        <div class="card-body">
+          <a 
+            href="{{ item.url }}" 
+            class="card-title fs-5 fw-semibold link-body-emphasis link-underline link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover">
+            {{item.title}}
+          </a>
+          <p class="card-text mt-1 text-justify">{{ item.excerpt | truncate: max }}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-body-secondary"><i class="far fa-calendar-days fa-sm"></i> {{ item.date | date_to_long_string }}</small>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+{% if include.url %}
+  <a 
+    href="{{ include.url | relative_url }}" 
+    class="btn btn-outline-dark rounded-pill mt-3">
+    All blog posts <i class="fas fa-angle-right"></i>
+  </a>
+{% endif %}

@@ -1,0 +1,18 @@
+{% assign p = include.publication %}
+
+<div class="p-3 rounded-2 bg-light border border-dark-subtle">
+  <p class="mt-0 mb-1">
+    <a 
+      href="{{ p.url | relative_url }}" 
+      class="fs-5 fw-medium link-body-emphasis link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover">
+      {{ p.title }}
+    </a>
+  </p>
+  <div class="text-body-secondary">
+    {% assign author_count = p.authors | split: ',' | size %}
+    {% assign first_author = p.authors | split: ',' | first %}
+    <i class="fas fa-user-group fa-sm"></i> {{ first_author }} {% if author_count > 0 %}et al.{% endif %}
+    <i class="fas fa-newspaper ms-md-1"></i> {{ p.venue | venue_name }}
+    {% include publication_status_badge.html publication=pub %}
+  </div>
+</div>

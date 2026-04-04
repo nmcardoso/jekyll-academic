@@ -1,0 +1,216 @@
+---
+layout: page
+---
+
+{% assign title = page.shorttitle | default: page.title %}
+{% assign striped_content = page.content | strip | strip_html | strip_newlines %}
+
+<div class="pt-3 pb-5 page-content font-serif">
+  <h1 class="mt-0"><i class="fa-regular fa-rectangle-list fa-sm"></i> Publication info</h1>
+  {% if page.title %}
+    <div>
+      <span class="font-sans fw-medium">Title: </span> {{ page.title }}
+    </div>
+  {% endif %}
+  
+  {% if page.authors %}
+    <div class="mt-3">
+      <span class="font-sans fw-medium">Authors: </span> {{ page.authors }}
+    </div>
+  {% endif %}
+
+  <div class="row">
+    <div class="col">
+  {% if page.year %}
+    <div class="mt-3">
+      <span class="font-sans fw-medium">Publication date: </span> {{ page.year }}
+    </div>
+  {% endif %}
+
+  {% if page.venue %}
+    <div class="mt-3">
+      <span class="font-sans fw-medium">{{ page.type | capitalize | default: 'Journal' }}: </span> 
+      {{ page.venue | venue_name }}
+    </div>
+  {% endif %}
+
+  {% if page.preprint or page.doi or page.ads %}
+  <div class="mt-3">
+    <span class="font-sans fw-medium">Access: </span> 
+    {% if page.pdf %}
+      <a 
+        class="btn btn-outline-primary btn-sm font-sans me-2" 
+        href="{{ page.pdf }}" 
+        target="_blank" 
+        role="button">
+        <i class="fa-regular fa-file-pdf"></i> PDF
+      </a>
+    {% endif %}
+
+    {% if page.doi %}
+      <a 
+        class="btn btn-outline-primary btn-sm font-sans me-2" 
+        href="https://doi.org/{{ page.doi }}" 
+        target="_blank" 
+        role="button">
+        <i class="fa-regular fa-file"></i> Publisher <i class="fa-solid fa-circle-check"></i>
+      </a>
+    {% endif %}
+
+    {% if page.preprint %}
+      <a 
+        class="btn btn-outline-primary btn-sm font-sans me-2" 
+        href="{{ page.preprint }}" 
+        target="_blank" 
+        role="button">
+        <i class="fa-regular fa-file"></i> Preprint
+      </a>
+    {% endif %}
+
+    {% if page.arxiv %}
+      <a 
+        class="btn btn-outline-primary btn-sm font-sans me-2" 
+        href="{{ page.arxiv }}" 
+        target="_blank" 
+        role="button">
+        <i class="fa-regular fa-file"></i> ArXiv
+      </a>
+    {% endif %}
+
+    {% if page.techrxiv %}
+      <a 
+        class="btn btn-outline-primary btn-sm font-sans me-2" 
+        href="{{ page.techrxiv }}" 
+        target="_blank" 
+        role="button">
+        <i class="fa-regular fa-file"></i> TechRxiv
+      </a>
+    {% endif %}
+
+    {% if page.biorxiv %}
+      <a 
+        class="btn btn-outline-primary btn-sm font-sans me-2" 
+        href="{{ page.biorxiv }}" 
+        target="_blank" 
+        role="button">
+        <i class="fa-regular fa-file"></i> BioRxiv
+      </a>
+    {% endif %}
+
+    {% if page.pmid %}
+      <a 
+        class="btn btn-outline-primary btn-sm font-sans me-2" 
+        href="https://pubmed.ncbi.nlm.nih.gov/{{ page.pmid }}" 
+        target="_blank" 
+        role="button">
+        <i class="fa-regular fa-file"></i> Pubmed
+      </a>
+    {% endif %}
+
+    {% if page.ads %}
+      <a 
+        class="btn btn-outline-primary btn-sm font-sans me-2" 
+        href="{{ page.ads }}" 
+        target="_blank" 
+        role="button">
+        <i class="fa-regular fa-file"></i> ADS
+      </a>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="font-sans mt-3">
+    {% include publication_status_badge.html publication=page %}
+  </div>
+  
+
+  </div>
+  <div class="col-lg-auto">
+  {% assign c1 = site.data.lattes_citation[page.doi].wos %}
+  {% assign c2 = site.data.lattes_citation[page.doi].scopus %}
+  {% assign c3 = site.data.openalex_citation[page.doi].count %}
+  {% capture c %}{{ c1 }}{{ c2 }}{{ c3 }}{% endcapture %}
+  {% if site.dimensions_badge and page.doi and c %}
+    <div class="mt-4">
+      <span 
+      class="__dimensions_badge_embed__" 
+      data-hide-zero-citations="true"
+      data-doi="{{ page.doi }}" 
+      data-legend="always"></span>
+    </div>
+  {% endif %}
+</div></div>
+
+
+
+
+  
+  {% if page.abstract %}
+    <h1><i class="fa-solid fa-book-open fa-sm"></i> Abstract</h1>
+    <div class="text-justify">
+      {{ page.abstract | markdownify}}
+    </div>
+  {% endif %}
+
+
+
+
+
+
+
+  {% unless striped_content == empty %}
+    <h1><i class="fa-regular fa-folder-open fa-sm"></i> Online material</h1>
+    <article id="post-content" class="text-justify">{{ content }}</article>
+  {% endunless %}
+
+
+
+
+
+  {% if page.files %}
+    <h2>Files</h2>
+    {% assign resources = page.files | map: 'resource' | uniq %}
+    {% for res in resources %}
+      {% assign files = page.files | where: 'resource', res %}
+      <p class="fw-bold font-sans fs-5 mb-0">{{ res }}</p>
+      {% for file in files %}
+        {% include download.html name=file.name url=file.url %}
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+
+
+
+
+
+  {% include references.html icon=true %}
+
+
+
+
+
+  {% if page.bibtex %}
+    <h1><i class="fa-brands fa-tex fa-sm"></i> Citation</h1>
+    {% highlight bibtex %}{{ page.bibtex }}{% endhighlight %}
+  {% endif %}
+
+
+
+
+
+  {% if page.members and page.members.size > 0 %}
+    <h1><i class="fa-solid fa-users fa-sm"></i> Related Members</h1>
+    {% for member in page.members %}
+      {% include member_pill.html member=member %}
+    {% endfor %}
+  {% endif %}
+  
+
+
+
+  {% if site.disqus %}
+    <div class="mt-5 pt-3 mb-2">
+      {% include disqus.html %}
+    </div>
+  {% endif %}
+</div>

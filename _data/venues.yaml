@@ -1,0 +1,30 @@
+# Astronomy Journals
+apj: 
+  name: The Astrophysical Journal
+  issn: 1538-4357
+aj: 
+  name: The Astronomical Journal
+  issn: 1538-3881
+apjs: 
+  name: The Astrophysical Journal Supplement Series
+  issn: 0067-0049
+aa: 
+  name: Astronomy & Astrophysics
+  issn: 0004-6361
+ac: 
+  name: Astronomy & Computing
+  issn: 2213-1337
+mnras: 
+  name: Monthly Notices of the Royal Astronomical Society
+  issn: 1365-2966
+
+# Computing Journals
+tpami: 
+  name: IEEE Transactions on Pattern Analysis and Machine Intelligence
+  issn: 0162-8828
+pami: 
+  name: IEEE Transactions on Pattern Analysis and Machine Intelligence
+  issn: 0162-8828
+eswa: 
+  name: Expert Systems with Applications
+  issn: 0957-4174
