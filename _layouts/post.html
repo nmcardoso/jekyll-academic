@@ -8,6 +8,6 @@ layout: page
 
 <article 
   id="post-content" 
-  class="{{ if page.serif }}font-serif{{ endif }} text-justify">
+  class="{% if page.serif %}font-serif{% endif %} text-justify">
   {{ content }}
 </article>
