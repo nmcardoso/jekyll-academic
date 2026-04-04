@@ -1,6 +1,6 @@
 ---
 title: "Dummy Publication 01: Multi-Element Rendering Test"
-venue: Journal of Interface Validation
+venue: aj
 authors: |
   Ana M Ferreira, Bruno R Silva, Carla P Pereira and Diego M Rocha
 year: 2024

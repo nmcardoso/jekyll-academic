@@ -1,6 +1,6 @@
 ---
 title: "Dummy Publication 05: End-to-End UI Coverage"
-venue: Journal of Placeholder Science
+venue: pami
 authors: |
   Diego M Rocha, Carla P Pereira, Gabriela V Castro and Bruno R Silva
 year: 2023

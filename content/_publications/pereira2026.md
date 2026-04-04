@@ -1,6 +1,6 @@
 ---
 title: "Dummy Publication 04: Complete Frontmatter Example"
-venue: Synthetic Astronomy Notes
+venue: apj
 authors: |
   Carla P Pereira, Gabriela V Castro, Ana M Ferreira and Felipe G Lima
 year: 2026
