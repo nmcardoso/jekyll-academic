@@ -1,5 +1,6 @@
 {% assign title = page.title | default: site.title %}
 {% assign subtitle = page.subtitle | default: site.subtitle %}
+{% assign image = page.masterhead.image | default: page.image %}
 
 {% if page.masterhead_padding %}
   {% capture custom_style %}
@@ -12,9 +13,9 @@
 <header 
   class="masthead text-white text-shadow inner-shadow" 
   {% if include.member %}
-    style="background-image: url('{{ page.image }}'); {{ custom_style | strip }}"
+    style="background-image: url('{{ image }}'); {{ custom_style | strip }}"
   {% elsif include.image %}
-    style="background-image: url('{{ page.image }}'); {{ custom_style | strip }}" 
+    style="background-image: url('{{ image }}'); {{ custom_style | strip }}" 
   {% endif %}>
   <div class="overlay"></div>
   <div class="container">
