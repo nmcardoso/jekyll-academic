@@ -1,12 +1,20 @@
 {% assign title = page.title | default: site.title %}
 {% assign subtitle = page.subtitle | default: site.subtitle %}
 
+{% if page.masterhead_padding %}
+  {% capture custom_style %}
+    padding-top: {{ page.masterhead_padding }}; padding-bottom: {{ page.masterhead_padding }}; 
+  {% endcapture %}
+{% else %}
+  {% assign custom_style = "" %}
+{% endif %}
+
 <header 
   class="masthead text-white text-shadow inner-shadow" 
   {% if include.member %}
-    style="padding-top: 5rem; padding-bottom: 5rem; background-image: url('{{ page.image }}');"
+    style="background-image: url('{{ page.image }}'); {{ custom_style | strip }}"
   {% elsif include.image %}
-    style="background-image: url('{{ page.image }}')" 
+    style="background-image: url('{{ page.image }}'); {{ custom_style | strip }}" 
   {% endif %}>
   <div class="overlay"></div>
   <div class="container">
