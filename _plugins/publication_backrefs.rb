@@ -31,7 +31,6 @@ module Jekyll
         matched_members = []
 
         names = extract_member_names(pub.data['authors'])
-        Jekyll.logger.info "BROCA", "#{pub.data.inspect}"
 
         names.each do |name|
           norm = normalize_name(name)
