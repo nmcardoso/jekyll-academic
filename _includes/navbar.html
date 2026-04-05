@@ -1,7 +1,14 @@
 <nav class="navbar navbar-light bg-light static-top navbar-expand-lg py-3 border-bottom border-2 border-light-subtle">
   <div class="container">
     <a class="navbar-brand w-600" href="/">
-      <!-- <img src="/assets/img/iag_logo_black.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+      {% if site.logo %}
+        <img 
+          src="{{ site.logo }}" 
+          width="30" 
+          height="30" 
+          class="d-inline-block align-top" 
+          alt="" />
+      {% endif %}
       {{ site.title }}
     </a>
     <button 
