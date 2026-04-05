@@ -3,64 +3,61 @@
     <div class="row">
       <div class="col-12 col-md-6 pr-lg-5">
         <h6>{{ site.title }}</h6>
-        <p>
-          {{ site.description }}
-        </p>
+        <p>{{ site.footer.description | default: site.description }}</p>
 
-        <h6 class="mt-4">Apoio</h6>
-        <ul class="list-unstyled list-inline footer-logos">
-          <li class="list-inline-item">
-            <a href="http://www.iag.usp.br">
-              <img class="hover-img" src="/assets/img/iag_logo.png" data-toggle="tooltip" height="42px" alt="IAG Logo"
-                title="Instituto de Astronomia, Geofísica e Ciências Atmosféricas">
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="http://prp.usp.br">
-              <img class="hover-img" src="/assets/img/prp_logo.png" data-toggle="tooltip" height="42px" alt="PRP Logo"
-                title="Pró Reitoria de Pesquisa">
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="http://usp.br">
-              <img class="hover-img" src="/assets/img/usp_logo.png" data-toggle="tooltip" height="42px" alt="USP Logo"
-                title="Universidade de São Paulo">
-            </a>
-          </li>
-        </ul>
-      </div>
+        {% if site.footer.supporters %}
+          <h6 class="mt-3">{{ site.footer.supporters.title }}</h6>
+          <ul class="list-unstyled list-inline footer-logos">
+            {% for item in site.footer.supporters.items %}
+            <li class="list-inline-item">
+                <a href="{{ item.href }}">
+                  <img 
+                    class="hover-img" 
+                    src="{{ item.image | relative_url }}" 
+                    data-bs-toggle="tooltip" 
+                    height="42px" 
+                    alt="{{ item.alt }}"
+                    title="{{ item.title }}" />
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      
       <div class="col-4 col-md-3">
         <h6>Explore</h6>
         <ul class="list-unstyled">
           {% for item in site.data.navigation %}
-          <li><a href="{{ item.link }}">{{ item.name }}</a></li>
+            <li><a href="{{ item.link }}">{{ item.name }}</a></li>
           {% endfor %}
         </ul>
       </div>
+      
+      {% if footer.info %}
       <div class="col-8 col-md-3">
-        <h6>Contato</h6>
+        <h6>{{ site.footer.info.title }}</h6>
         <p class="text-sm ">
-          IAG - Instituto de Astronomia, Geofísica e Ciências Atmosféricas <br>
-          Universidade de São Paulo <br>
-          Rua do Matão, 1226 <br>
-          Cidade Universitária <br>
-          São Paulo - SP <br>
+          {{ site.footer.info.content }}
         </p>
       </div>
+      {% endif %}
     </div>
   </div>
 
   <div class="container-fluid footer-line text-center">
     <small>
-      &copy; {{ site.startyear }}-{{ 'now' | date: '%Y' }} {{ site.title }} | 
-      Designed by <a href="/authors/nmcardoso">Natanael M. Cardoso</a> &bull; 
+      &copy; {{ site.footer.year }}-{{ 'now' | date: '%Y' }} {{ site.title }} | 
+      Designed by <a href="https://natanael.net" target="_blank">Natanael M. Cardoso</a> &bull; 
       Powered by <a href="https://jekyllrb.com/">Jekyll</a><br />
       Lastest build: {{ 'now' | date: '%d/%m/%Y %H:%M:%S' }}
-      {% assign commit_sha = site.env.GITHUB_SHA | default: '' %}
-      {% unless commit_sha == empty %}
-        [<a href="{{ site.repository }}/commit/{{ commit_sha}}">{{ commit_sha | slice: 0, 8 }}</a>] 
-        <a href="{{ site.repository }}"><i class="fab fa-github"></i></a>
-      {% endunless %}
+      {% if site.footer.commit_info %}
+        {% assign commit_sha = site.env.GITHUB_SHA | default: '' %}
+        {% unless commit_sha == empty %}
+          [<a href="{{ site.repository }}/commit/{{ commit_sha}}">{{ commit_sha | slice: 0, 8 }}</a>] 
+          <a href="{{ site.repository }}"><i class="fab fa-github"></i></a>
+        {% endunless %}
+      {% endif %}
     </small>
   </div>
 </footer>
