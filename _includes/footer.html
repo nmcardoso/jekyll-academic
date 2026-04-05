@@ -22,8 +22,8 @@
               </li>
             {% endfor %}
           </ul>
+        {% endif %}
         </div>
-      {% endif %}
       
       <div class="col-4 col-md-3">
         <h6>Explore</h6>
@@ -34,7 +34,7 @@
         </ul>
       </div>
       
-      {% if footer.info %}
+      {% if site.footer.info %}
       <div class="col-8 col-md-3">
         <h6>{{ site.footer.info.title }}</h6>
         <p class="text-sm ">
