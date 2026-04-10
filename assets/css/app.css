@@ -548,4 +548,5 @@ a.post-author:hover {
   --bs-tooltip-padding-y: 0.25rem;
   --bs-tooltip-padding-x: 0.25rem;
   --bs-tooltip-border-radius: 0.25rem;
+  --bs-tooltip-opacity: 1;
 }
