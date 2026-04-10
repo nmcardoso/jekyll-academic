@@ -1,0 +1,7 @@
+{% assign icon = include.icon | default: true %}
+
+{% assign author_count = include.authors | split: ',' | size %}
+{% assign first_author = include.authors | split: ',' | first %}
+
+{% if icon %}<i class="fas fa-user-group fa-sm"></i>{% endif %}
+{{ first_author }} {% if author_count > 0 %}et al.{% endif %}

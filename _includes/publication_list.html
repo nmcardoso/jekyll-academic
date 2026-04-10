@@ -12,14 +12,15 @@
     <p><b>{{ group.name }}</b></p>
     <ol class="font-sans" start="{{ c }}">
       {% for pub in publications %}
-        {% assign n = pub.authors | split: ',' | first | strip %}
         <li class="mt-3">
           <a 
             class="link-offset-2-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-            href="{{ pub.url }}">{{ pub.title }}</a>
-          <div class="mt-0 pt-0">
-            <i class="fa-solid fa-user-group fa-sm text-body-secondary"></i> <span class="me-1">{{ n }} et al.</span>
-            <i class="fa-solid fa-book text-body-secondary"></i> <span>{{ pub.venue | venue_name }}</span>
+            href="{{ pub.url }}">
+            {{ pub.title }}
+          </a>
+          <div class="mt-0 pt-0 text-body-secondary">
+            {% include publication_author.html authors=pub.authors %}
+            {% include publication_venue.html venue=pub.venue %}
           </div>
           <div class="mt-0 pt-0">
             {% include publication_status_badge.html publication=pub %}

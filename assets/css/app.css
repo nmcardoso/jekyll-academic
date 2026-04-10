@@ -255,6 +255,10 @@ footer a:hover {
   text-decoration-style: dotted;
 }
 
+.border-bottom-dotted {
+  border-bottom: 0.125rem dotted;
+}
+
 .cursor-default {
   cursor:default;
 }
@@ -537,4 +541,11 @@ a.post-author:hover {
 
 .chip:hover span.tag {
   background-image: url('/assets/img/tag.svg');
+}
+
+.wos-info-tooltip {
+  --bs-tooltip-max-width: 400px;
+  --bs-tooltip-padding-y: 0.25rem;
+  --bs-tooltip-padding-x: 0.25rem;
+  --bs-tooltip-border-radius: 0.25rem;
 }

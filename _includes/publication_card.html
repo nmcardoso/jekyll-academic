@@ -9,10 +9,8 @@
     </a>
   </p>
   <div class="text-body-secondary">
-    {% assign author_count = p.authors | split: ',' | size %}
-    {% assign first_author = p.authors | split: ',' | first %}
-    <i class="fas fa-user-group fa-sm"></i> {{ first_author }} {% if author_count > 0 %}et al.{% endif %}
-    <i class="fas fa-newspaper ms-md-1"></i> {{ p.venue | venue_name }}
+    {% include publication_author.html authors=p.authors%}
+    {% include publication_venue.html venue=p.venue %}
     {% include publication_status_badge.html publication=pub %}
   </div>
 </div>
