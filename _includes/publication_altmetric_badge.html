@@ -15,7 +15,7 @@
     class="altmetric-embed" 
     data-link-target="_blank"
     data-badge-type="{{ page.altmetric.style }}"
-    {% if page.altmetric.popover %}data-badge-popover={{ page.altmetric.popover }}{% endif %}
+    {% if page.altmetric.popover %}data-badge-popover="{{ page.altmetric.popover }}"{% endif %}
     {% if page.altmetric.details %}data-badge-details="right"{% endif %}
     {% if page.altmetric.hide_uncited %}data-hide-no-mentions{% endif %}
     {{ src }}>
