@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light static-top navbar-expand-lg py-3 border-bottom border-2 border-light-subtle">
+<nav class="navbar bg-body-tertiary static-top navbar-expand-lg py-3 border-bottom border-2 border-light-subtle">
   <div class="container">
     <a class="navbar-brand w-600" href="/">
       {% if site.logo %}
@@ -37,6 +37,11 @@
             </a>
           </li>
           {% endfor %}
+          <li class="nav-item">
+            <a class="nav-link cursor-pointer" id="theme-switcher" title="Change color mode">
+              <i class="fa-solid fa-circle-half-stroke"></i>
+            </a>
+          </li>
         {% endif %}
       </ul>
     </div>

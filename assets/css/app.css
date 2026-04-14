@@ -83,7 +83,7 @@ header.masthead h1{
 }
 
 footer {
-  background-color: #2b2b2b !important;
+  background-color: #1c1d20 !important;
 }
 
 footer h6 {
@@ -101,7 +101,7 @@ footer .container {
 }
 
 footer .footer-line {
-  background-color: #1b1b1b;
+  background-color: #101113;
   padding: 1rem 0;
 }
 
@@ -260,7 +260,11 @@ footer a:hover {
 }
 
 .cursor-default {
-  cursor:default;
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 
@@ -515,16 +519,14 @@ a.post-author:hover {
   padding-bottom: 7px;
   font-size: 14px;
   border-radius: 50px;
-  background-color: #f1f1f1;
+  background-color: var(--bs-tertiary-bg);
   text-decoration: none;
-  color: #343a40de;
   font-weight: bold;
 }
 
 .chip:hover {
-  background-color: var(--bs-secondary-bg-subtle);
+  background-color: var(--bs-secondary-bg);
   text-decoration: none;
-  color: #2c2c2c;
 }
 
 .chip:active {

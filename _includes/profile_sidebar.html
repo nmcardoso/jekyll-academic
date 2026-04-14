@@ -14,18 +14,19 @@
 {% endif %}
 
 {% if site.author.location %}
-  <p class="mb-2 text-body-secondary">
-    <i class="fa-solid fa-location-dot"></i> {{ site.author.location }}
+  <p class="mb-2">
+    <i class="fa-solid fa-location-dot text-body-secondary"></i> 
+    <span class="text-body-emphasis opacity-75">{{ site.author.location }}</span>
   </p>
 {% endif %}
 
 {% for link in site.author.links %}
   <p class="mb-2">
     <i class="{{ link.icon }} text-body-secondary"></i>
-    <a ]
+    <a
       href="{{ link.url }}" 
       target="_blank" 
-      class="link-secondary link-underline link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover">
+      class="link-body-emphasis link-opacity-75 link-opacity-100-hover link-underline link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover">
       {{ link.label }}
     </a>
   </p>
