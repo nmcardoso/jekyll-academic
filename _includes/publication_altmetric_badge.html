@@ -1,0 +1,23 @@
+{% if page.doi %}
+  {% capture src %}data-doi="{{ page.doi }}"{% endcapture %}
+{% elsif page.arxiv %}
+  {% capture src %}data-arxiv-id="{{ page.arxiv | split: '/' | last }}"{% endcapture %}
+{% elsif page.pmid %}
+  {% capture src %}data-pmid="{{ page.pmid }}"{% endcapture %}
+{% elsif page.isbn %}
+  {% capture src %}data-isbn="{{ page.isbn }}"{% endcapture %}
+{% else %}
+  {% assign src = nil %}
+{% endif %}
+
+{% if page.altmetric.enabled and src %}
+  <div 
+    class="altmetric-embed" 
+    data-link-target="_blank"
+    data-badge-type="{{ page.altmetric.style }}"
+    {% if page.altmetric.popover %}data-badge-popover={{ page.altmetric.popover }}{% endif %}
+    {% if page.altmetric.details %}data-badge-details="right"{% endif %}
+    {% if page.altmetric.hide_uncited %}data-hide-no-mentions{% endif %}
+    {{ src }}>
+  </div>
+{% endif %}

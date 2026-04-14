@@ -153,6 +153,17 @@ defaults:
       type: publications
     values:
       layout: publication
+      altmetric:
+        enabled: true
+        hide_uncited: true
+        style: medium-donut
+        popover: bottom
+        details: false
+      dimensions:
+        enabled: true
+        hide_uncited: true
+        style: medium_circle
+        legend: hover-bottom
   # Members
   - scope:
       path: ""

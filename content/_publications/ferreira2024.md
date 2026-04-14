@@ -5,6 +5,7 @@ authors: |
   Ana M Ferreira, Bruno R Silva, Carla P Pereira and Diego M Rocha
 year: 2024
 status: submitted
+doi: 10.1093/mnras/stab1981
 pdf: https://example.org/dummy-publication-01.pdf
 ads: https://ui.adsabs.harvard.edu/abs/2026dummy0001/abstract
 files:

@@ -1,0 +1,21 @@
+{% assign c1 = site.data.lattes_citation[page.doi].wos %}
+{% assign c2 = site.data.lattes_citation[page.doi].scopus %}
+{% assign c3 = site.data.openalex_citation[page.doi].count %}
+{% capture c %}{{ c1 }}{{ c2 }}{{ c3 }}{% endcapture %}
+
+{% if page.doi %}
+  {% capture src %}data-doi="{{ page.doi }}"{% endcapture %}
+{% elsif page.pmid %}
+  {% capture src %}data-pmid="{{ page.pmid }}"{% endcapture %}
+{% else %}
+  {% assign src = nil %}
+{% endif %}
+
+{% if page.dimensions.enabled and src and c %}
+  <span 
+  class="__dimensions_badge_embed__" 
+  {% if page.dimensions.hide_uncited %}data-hide-zero-citations="true"{% endif %}
+  data-legend="{{ page.dimensions.legend }}"
+  {{ src }}>
+  </span>
+{% endif %}

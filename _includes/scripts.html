@@ -36,11 +36,18 @@
   </script>
 {% endif %}
 
-{% if site.dimensions_badge %}
+{% if page.dimensions.enabled %}
   <script 
     async 
     src="https://badge.dimensions.ai/static/ai/badge.js" 
     charset="utf-8">
+  </script>
+{% endif %}
+
+{% if page.altmetric.enabled %}
+  <script 
+    type='text/javascript' 
+    src='https://embed.altmetric.com/assets/embed.js'>
   </script>
 {% endif %}
 
