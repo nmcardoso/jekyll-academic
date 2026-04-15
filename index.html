@@ -1,3 +1,21 @@
 ---
 layout: page
 ---
+
+
+<section class="mb-5">
+  <h1 class="fs-3 fw-bold">Scientific production</h1>
+
+  {% include publication_card_list.html url="/publications" %}
+</section>
+
+
+
+
+{% if site.posts.size > 0 %}
+<section class="mb-3">
+  <h1 class="fs-3 fw-bold">Blog posts</h1>
+
+  {% include post_card_list.html url="/blog" %}
+</section>
+{% endif %}
