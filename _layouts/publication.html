@@ -18,19 +18,28 @@ layout: page
 
   <div class="row mt-3">
     <div class="col">
-      <p 
-        class="border-bottom text-uppercase fw-light fs-6 mb-2" 
-        style="letter-spacing: 0.2rem;">
-        Access
-      </p>
-      {% include publication_access_buttons.html %}
+      {% capture pub_buttons %}
+        {% include publication_access_buttons.html %}
+      {% endcapture %}
 
-      <p 
-        class="border-bottom text-uppercase fw-light fs-6 mb-2 mt-3"
-        style="letter-spacing: 0.2rem;">
-        Share
-      </p>
+      {% assign pub_buttons = pub_buttons | strip %}
+
+      {% if pub_buttons.size > 0 %}
+        <p 
+          class="border-bottom text-uppercase fw-light fs-6 mb-2" 
+          style="letter-spacing: 0.2rem;">
+          Access
+        </p>
+        {{ pub_buttons }}
+      {% endif %}
+      
+
       {% if page.doi %}
+        <p 
+          class="border-bottom text-uppercase fw-light fs-6 mb-2 mt-3"
+          style="letter-spacing: 0.2rem;">
+          Share
+        </p>
         {% include share_buttons.html %}
       {% endif %}
     </div>
@@ -42,7 +51,7 @@ layout: page
           style="letter-spacing: 0.2rem;">
           Citations
         </p>
-        <div class="d-flex gap-4">
+        <div id="external-citations-badges" class="d-flex gap-4">
           {% if page.altmetric.enabled %}
             <div>
               {% include publication_altmetric_badge.html %}
@@ -57,7 +66,17 @@ layout: page
       </div>
     {% endif %}
   </div>
-  
+
+  <script type="text/javascript">
+    const empty = [
+      ...document.querySelectorAll('#external-citations-badges div')
+    ].map(e => e.childElementCount == 0).every(Boolean)
+    if (empty) {
+      document.getElementById('external-citations-badges')?.parentElement?.remove()
+    }
+  </script>
+
+
 
 
   
