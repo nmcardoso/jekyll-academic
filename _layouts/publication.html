@@ -83,7 +83,7 @@ layout: page
   
   {% if page.abstract %}
     <h1>Abstract</h1>
-    <div class="text-justify">
+    <div class="text-justify font-serif">
       {{ page.abstract | markdownify }}
     </div>
   {% endif %}
@@ -96,7 +96,9 @@ layout: page
 
   {% unless striped_content == empty %}
     <h1>Online material</h1>
-    <article id="post-content" class="text-justify">{{ content }}</article>
+    <article id="post-content" class="text-justify font-serif">
+      {{ content }}
+    </article>
   {% endunless %}
 
 
