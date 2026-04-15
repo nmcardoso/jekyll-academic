@@ -68,13 +68,15 @@ layout: page
   </div>
 
   <script type="text/javascript">
-    const empty = [
-      ...document.querySelectorAll('#external-citations-badges div'),
-      document.querySelector('span.__dimensions_badge_embed__'),
-    ].map(e => e.childElementCount == 0).every(Boolean)
-    if (empty) {
-      document.getElementById('external-citations-badges')?.parentElement?.remove()
-    }
+    window.addEventListener('load', () => {
+      const empty = [
+        document.querySelector('span.__dimensions_badge_embed__'),
+        document.querySelector('div.altmetric-embed'),
+      ].map(e => e.childElementCount === 0)
+      if (empty.length == 0 || empty.every(Boolean)) {
+        document.getElementById('external-citations-badges')?.parentElement?.remove()
+      }
+    })
   </script>
 
 
