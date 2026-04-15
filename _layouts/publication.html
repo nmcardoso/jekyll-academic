@@ -70,7 +70,7 @@ layout: page
   <script type="text/javascript">
     const empty = [
       ...document.querySelectorAll('#external-citations-badges div'),
-      ...document.querySelector('span.__dimensions_badge_embed__'),
+      document.querySelector('span.__dimensions_badge_embed__'),
     ].map(e => e.childElementCount == 0).every(Boolean)
     if (empty) {
       document.getElementById('external-citations-badges')?.parentElement?.remove()
