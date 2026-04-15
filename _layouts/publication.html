@@ -72,8 +72,8 @@ layout: page
       const empty = [
         document.querySelector('span.__dimensions_badge_embed__'),
         document.querySelector('div.altmetric-embed'),
-      ].map(e => e.childElementCount === 0)
-      if (empty.length == 0 || empty.every(Boolean)) {
+      ].map(e => e?.childElementCount === 0).every(Boolean)
+      if (empty) {
         document.getElementById('external-citations-badges')?.parentElement?.remove()
       }
     })
