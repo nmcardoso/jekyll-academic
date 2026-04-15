@@ -167,7 +167,7 @@ footer a:hover {
   box-shadow: inset 0 0 10px rgba(26, 26, 26, 0.8);
 }
 
-.features-icons{
+.features-icons {
   padding-top: 4.5rem;
   padding-bottom: 4.5rem;
 }
@@ -353,7 +353,7 @@ section.latest-posts .card a {
 }
 
 .post-content img {
-  max-width: 100%;
+  max-width: 100% !important;
   display: block;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -362,94 +362,6 @@ section.latest-posts .card a {
 .post-content h1, .post-content h2, .post-content h3, .post-content h4 {
   padding-top: 2rem;
   padding-bottom: .6rem;
-}
-
-.page-content h1:after {
-  content:' ';
-  display:block;
-  border-bottom: 1px solid #c5c5c5;
-}
-
-.page-content h1, .page-content h2, .page-content h3, .page-content h4, .page-content h5 {
-  font-family: 'Roboto', sans-serif;
-}
-
-.page-content h1 {
-  font-size: 1.9rem;
-  margin-top: 48px;
-}
-
-.page-content h2 {
-  font-size: 1.7rem;
-  margin-top: 28px;
-}
-
-.page-content h3 {
-  font-size: 1.5rem;
-  margin-top: 24px;
-}
-
-.page-content h4 {
-  font-size: 1.2rem;
-  margin-top: 16px;
-}
-
-.page-content h5 {
-  font-size: 1rem;
-}
-
-.page-content {
-  font-size: 1.2rem;
-}
-
-.highlight {
-  font-size: 1rem;
-  overflow-x: auto;
-  border-radius: 8px;
-}
-
-pre {
-  margin-bottom: 0px !important;
-}
-
-.highlight > pre {
-  padding: 18px 12px 18px 12px;
-  position: relative;
-}
-
-.highlighter-rouge {
-  margin-bottom: 1rem;
-}
-
-/* >> Copy button */
-.highlight > pre > button {
-  opacity: 0;
-  position: absolute;
-  top: 0.8rem;
-  right: 0.8rem;
-}
-
-.highlight:hover > pre > button {
-  opacity: 1;
-}
-
-.highlight > pre > button:active,
-.highlight > pre > button:focus {
-  opacity: 1;
-}
-/* << Copy button */
-
-table.rouge-table {
-  width: 100% !important;
-  margin: 0px !important;
-}
-
-.rouge-code {
-  padding-left: 8px;
-}
-
-.lineno {
-  text-align: right;
 }
 
 a.post-author {
@@ -504,12 +416,105 @@ a.post-author:hover {
   height: 100%;
 }
 
+.page-content {
+  font-size: 1.2rem;
+}
+
+.page-content img {
+  max-width: 100% !important;
+}
+
+.page-content h1:after {
+  content:' ';
+  display:block;
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.page-content h1, .page-content h2, .page-content h3, .page-content h4, .page-content h5 {
+  font-family: 'Roboto', sans-serif;
+}
+
+.page-content h1 {
+  font-size: 1.9rem;
+  margin-top: 48px;
+}
+
+.page-content h2 {
+  font-size: 1.7rem;
+  margin-top: 28px;
+}
+
+.page-content h3 {
+  font-size: 1.5rem;
+  margin-top: 24px;
+}
+
+.page-content h4 {
+  font-size: 1.2rem;
+  margin-top: 16px;
+}
+
+.page-content h5 {
+  font-size: 1rem;
+}
+
 
 
 
 /***************
 ** COMPONENTS **
 ****************/
+
+.highlight {
+  font-size: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+pre {
+  margin-bottom: 0px !important;
+}
+
+.highlight > pre {
+  padding: 18px 12px 18px 12px;
+  position: relative;
+}
+
+.highlighter-rouge {
+  margin-bottom: 1rem;
+}
+
+/* >> Copy button */
+.highlight > pre > button {
+  opacity: 0;
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+}
+
+.highlight:hover > pre > button {
+  opacity: 1;
+}
+
+.highlight > pre > button:active,
+.highlight > pre > button:focus {
+  opacity: 1;
+}
+/* << Copy button */
+
+table.rouge-table {
+  width: 100% !important;
+  margin: 0px !important;
+}
+
+.rouge-code {
+  padding-left: 8px;
+}
+
+.lineno {
+  text-align: right;
+}
+
 
 .chip {
   display: inline-block;
