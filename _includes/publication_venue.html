@@ -1,14 +1,14 @@
 {% assign wos = site.data.venues[include.venue].wosinfo %}
 {% assign icon = include.icon | default: true %}
 
-{% if icon %}<i class="fas fa-newspaper ms-md-1"></i>{% endif %}
+{% if icon %}<i class="fas fa-newspaper"></i>{% endif %}
 <span 
   {% if wos %} 
   class="border-bottom-dotted cursor-default"
   data-bs-toggle="tooltip" 
   data-bs-html="true" 
   data-bs-custom-class="wos-info-tooltip"
-  data-bs-title="<img width='320' height='120' src='https://wos-journal.info/journalide/{{ wos }}' alt='Web of Science bibliometrics' />"
+  data-bs-title="<img width='320' height='120' src='https://wos-journal.info/journalide/{{ wos }}' alt='Web of Science metrics' />"
   {% endif %}>
   {{ include.venue | venue_name }}
 </span>

@@ -10,7 +10,9 @@
   </p>
   <div class="text-body-secondary">
     {% include publication_author.html authors=p.authors%}
-    <div class="me-1">{% include publication_venue.html venue=p.venue %}</div>
+    <div class="d-inline ms-md-1 me-md-1">
+      {% include publication_venue.html venue=p.venue %}
+    </div>
     {% include publication_status_badge.html publication=pub %}
   </div>
 </div>
