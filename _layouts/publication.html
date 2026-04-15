@@ -124,12 +124,16 @@ layout: page
       </div>
     </div>
     <div class="col-lg-auto d-flex gap-4 pt-3">
-      <div>
-        {% include publication_altmetric_badge.html %}
-      </div>
-      <div>
-        {% include publication_dimensions_badge.html %}
-      </div>
+      {% if page.altmetric.enabled %}
+        <div>
+          {% include publication_altmetric_badge.html %}
+        </div>
+      {% endif %}
+      {% if page.dimensions.enabled %}
+        <div>
+          {% include publication_dimensions_badge.html %}
+        </div>
+      {% endif %}
     </div>
   </div>
 
