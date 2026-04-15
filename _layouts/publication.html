@@ -70,8 +70,8 @@ layout: page
   <script type="text/javascript">
     window.addEventListener('load', () => {
       const empty = [
-        document.querySelector('span.__dimensions_badge_embed__'),
-        document.querySelector('div.altmetric-embed'),
+        {% if page.dimensions.enabled %}document.querySelector('span.__dimensions_badge_embed__'),{% endif %}
+        {% if page.altmetric.enabled %}document.querySelector('div.altmetric-embed'),{% endif %}
       ].map(e => e?.childElementCount === 0).every(Boolean)
       if (empty) {
         document.getElementById('external-citations-badges')?.parentElement?.remove()
