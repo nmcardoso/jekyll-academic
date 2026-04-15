@@ -11,6 +11,6 @@ require_relative "jekyll-academic/venue_name"
 
 module JekyllAcademic
   Jekyll::Hooks.register :site, :post_read do |site|
-    puts "MyTheme: Custom plugin is active!"
+    puts "JekyllAcademic: Custom plugin is active!"
   end
 end
