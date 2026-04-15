@@ -5,6 +5,8 @@ authors: |
   Natanael M. Cardoso, Claudia Mendes de Oliveira, Angela C. Krabbe, Analia V. Smith Castelli, Gustavo B. Oliveira Schwarz, Lilianne Nakazono, Ricardo Demarco, Maiara S. Carvalho, William Schoenell, Tiago Ribeiro, Antonio Kanaan and Antonio M. Saraiva
 year: 2026
 status: accepted
+image: https://natanael.net/files/cardoso2026/astroinspect_ui.jpg
+masterhead: false
 pdf: https://arxiv.org/pdf/2603.04713
 ads: https://ui.adsabs.harvard.edu/abs/2026arXiv260304713C%2F/abstract
 files:
