@@ -34,15 +34,15 @@
     <meta name="citation_type" content="JOUR" />
     <meta name="citation_article_type" content="Full-length article" />
     <meta name="citation_online_date" content="2007/05/02" />
+    <meta name="description" content="{{ page.description | default: site.description }}" />
+    <meta name="twitter:description" content="{{ page.description | default: site.description }}" />
+    <meta name="og:image" content="{{ page.image | default: site.logo | absolute_url }}" />
+    <meta name="twitter:image" content="{{ page.image | default: site.logo | absolute_url }}" />
     <meta property=og:description content="The HTML title tag information should identify and describe exactly what a Web page contains. This paper analyzes the Title element and raises a signi…" />
   {% endcomment %}
-
+  
   <meta name="image" content="{{ page.image | default: site.logo | absolute_url }}" />
-  <meta name="og:image" content="{{ page.image | default: site.logo | absolute_url }}" />
-  <meta name="twitter:image" content="{{ page.image | default: site.logo | absolute_url }}" />
-  <meta name="description" content="{{ page.description | default: site.description }}" />
   <meta name="og:description" content="{{ page.description | default: site.description }}" />
-  <meta name="twitter:description" content="{{ page.description | default: site.description }}" />
 
   {% for icon in site.icons %}
     <link 
