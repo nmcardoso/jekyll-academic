@@ -15,6 +15,7 @@
 
 # Jekyll plugins
 plugins:
+  - jekyll-academic
   - jekyll-feed
   - jekyll-sitemap
   # - jekyll-include-cache
