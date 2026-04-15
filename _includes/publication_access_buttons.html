@@ -1,0 +1,79 @@
+{% if page.pdf %}
+  <a 
+    class="btn btn-outline-primary btn-sm font-sans me-2" 
+    href="{{ page.pdf }}" 
+    target="_blank" 
+    role="button">
+    <i class="fa-regular fa-file-pdf"></i> PDF
+  </a>
+{% endif %}
+
+{% if page.doi %}
+  <a 
+    class="btn btn-outline-primary btn-sm font-sans me-2" 
+    href="https://doi.org/{{ page.doi }}" 
+    target="_blank" 
+    role="button">
+    <i class="fa-regular fa-file"></i> Publisher <i class="fa-solid fa-circle-check"></i>
+  </a>
+{% endif %}
+
+{% if page.preprint %}
+  <a 
+    class="btn btn-outline-primary btn-sm font-sans me-2" 
+    href="{{ page.preprint }}" 
+    target="_blank" 
+    role="button">
+    <i class="fa-regular fa-file"></i> Preprint
+  </a>
+{% endif %}
+
+{% if page.arxiv %}
+  <a 
+    class="btn btn-outline-primary btn-sm font-sans me-2" 
+    href="{{ page.arxiv }}" 
+    target="_blank" 
+    role="button">
+    <i class="fa-regular fa-file"></i> ArXiv
+  </a>
+{% endif %}
+
+{% if page.techrxiv %}
+  <a 
+    class="btn btn-outline-primary btn-sm font-sans me-2" 
+    href="{{ page.techrxiv }}" 
+    target="_blank" 
+    role="button">
+    <i class="fa-regular fa-file"></i> TechRxiv
+  </a>
+{% endif %}
+
+{% if page.biorxiv %}
+  <a 
+    class="btn btn-outline-primary btn-sm font-sans me-2" 
+    href="{{ page.biorxiv }}" 
+    target="_blank" 
+    role="button">
+    <i class="fa-regular fa-file"></i> BioRxiv
+  </a>
+{% endif %}
+
+{% if page.pmid %}
+  <a 
+    class="btn btn-outline-primary btn-sm font-sans me-2" 
+    href="https://pubmed.ncbi.nlm.nih.gov/{{ page.pmid }}" 
+    target="_blank" 
+    role="button">
+    <i class="fa-regular fa-file"></i> Pubmed
+  </a>
+{% endif %}
+
+{% if page.ads %}
+  <a 
+    class="btn btn-outline-primary btn-sm font-sans me-2" 
+    href="{{ page.ads }}" 
+    target="_blank" 
+    role="button">
+    <i class="fa-regular fa-file"></i> ADS
+  </a>
+{% endif %}

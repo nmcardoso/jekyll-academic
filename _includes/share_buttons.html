@@ -1,0 +1,98 @@
+<a
+  class="btn btn-outline-primary btn-sm font-sans"
+  href="mailto:?subject={{ page.title }}&body={{ page.title }}%20-%20{{ page.url | absolute_url }}"
+  data-bs-toggle="tooltip"
+  data-bs-title="E-mail"
+  target="_blank"
+  rel="noopener"
+  role="button">
+  <i class="fas fa-envelope"></i>
+</a>
+
+<a
+  class="btn btn-outline-primary btn-sm font-sans"
+  href="https://mail.google.com/mail/?view=cm&su={{ page.title | url_encode }}&body={{ page.title | url_encode }}%0A{{ page.url | absolute_url | url_encode }}"
+  data-bs-toggle="tooltip"
+  data-bs-title="Gmail"
+  target="_blank"
+  rel="noopener"
+  role="button">
+  <i class="fab fa-google"></i>
+</a>
+
+<a
+  class="btn btn-outline-primary btn-sm font-sans"
+  href="https://www.mendeley.com/import/?doi={{ page.doi | url_encode }}"
+  data-bs-toggle="tooltip"
+  data-bs-title="Mendeley"
+  target="_blank"
+  rel="noopener"
+  role="button">
+  <i class="fab fa-mendeley"></i>
+</a>
+
+<a
+  class="btn btn-outline-primary btn-sm font-sans"
+  href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}"
+  data-bs-toggle="tooltip"
+  data-bs-title="Linkedin"
+  target="_blank"
+  rel="noopener"
+  role="button">
+  <i class="fab fa-linkedin"></i>
+</a>
+
+<a
+  class="btn btn-outline-primary btn-sm font-sans"
+  href="https://www.facebook.com/sharer.php?u={{ page.url | absolute_url | url_encode }}"
+  data-bs-toggle="tooltip"
+  data-bs-title="Facebook"
+  target="_blank"
+  rel="noopener"
+  role="button">
+  <i class="fab fa-facebook"></i>
+</a>
+
+<a
+  class="btn btn-outline-primary btn-sm font-sans"
+  href="https://x.com/share?url={{ page.url | absolute_url | url_encode }}&text={{ page.title | url_encode }}"
+  data-bs-toggle="tooltip"
+  data-bs-title="X"
+  target="_blank"
+  rel="noopener"
+  role="button">
+  <i class="fab fa-x-twitter"></i>
+</a>
+
+<a
+  class="btn btn-outline-primary btn-sm font-sans"
+  href="https://bsky.app/intent/compose?text={{ page.title | url_encode }}%0A{{ page.url | absolute_url | url_encode }}"
+  data-bs-toggle="tooltip"
+  data-bs-title="Bluesky"
+  target="_blank"
+  rel="noopener"
+  role="button">
+  <i class="fab fa-bluesky"></i>
+</a>
+
+<a
+  class="btn btn-outline-primary btn-sm font-sans"
+  href="https://share.joinmastodon.org/#text={{ page.title | url_encode }}%0A{{ page.url | absolute_url | url_encode }}"
+  data-bs-toggle="tooltip"
+  data-bs-title="Mastodon"
+  target="_blank"
+  rel="noopener"
+  role="button">
+  <i class="fab fa-mastodon"></i>
+</a>
+
+<a
+  class="btn btn-outline-primary btn-sm font-sans"
+  href="https://reddit.com/submit?url={{ page.url | absolute_url | url_encode }}&title={{ page.title | url_encode }}"
+  data-bs-toggle="tooltip"
+  data-bs-title="Reddit"
+  target="_blank"
+  rel="noopener"
+  role="button">
+  <i class="fab fa-reddit"></i>
+</a>
