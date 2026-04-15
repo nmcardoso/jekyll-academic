@@ -5,7 +5,7 @@ layout: page
 {% assign title = page.shorttitle | default: page.title %}
 {% assign striped_content = page.content | strip | strip_html | strip_newlines %}
 
-<div class="pt-3 pb-5 page-content">
+<div class="pb-2 page-content">
   <p class="fs-3 mb-1">{{ page.title }}</p>
 
   <p class="text-secondary-emphasis mb-1">{{ page.authors }}</p>
@@ -99,7 +99,7 @@ layout: page
   {% unless striped_content == empty %}
     <h1>Online material</h1>
     <article id="post-content" class="text-justify font-serif">
-      {{ content }}
+      {{ page.content }}
     </article>
   {% endunless %}
 
