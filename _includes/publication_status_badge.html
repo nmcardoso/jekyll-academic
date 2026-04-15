@@ -1,7 +1,7 @@
 {% assign p = include.publication %}
 {% assign base_class = "badge rounded-pill border cursor-default" %}
 
-<div class="d-inline-flex gap-2">
+{% capture content %}
   {% assign jcr = site.data.lattes_jcr[p.venue] %}
   {% if jcr %}
     <span 
@@ -63,4 +63,12 @@
         </span>
       {% endif %}
   {% endcase %}
-</div>
+{% endcapture %}
+
+{% assign content = content | strip %}
+
+{% if content.size > 0 %}
+  <div class="d-inline-flex gap-2">
+    {{ content }}
+  </div>
+{% endif %}
