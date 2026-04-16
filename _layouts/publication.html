@@ -13,7 +13,16 @@ layout: page
   <p class="text-muted mb-1">{{ page.venue | venue_name }}, {{ page.date | date: "%Y" }}</p>
 
   {% if page.doi %}
-    <p class="text-muted mb-1 fs-6">DOI: {{ page.doi }}</p>
+    <p class="text-muted mb-1 fs-6">
+      DOI: {{ page.doi }}
+      {% if page.bibtex %}
+        <a 
+          href="#citation" 
+          class="link-underline link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover ms-2">
+          Citation
+        </a>
+      {% endif %}
+    </p>
   {% endif %}
 
   {% include publication_status_badge.html publication=page %}
@@ -130,7 +139,7 @@ layout: page
 
   
   {% if page.abstract %}
-    <h1>Abstract</h1>
+    <h1 id="abstract">Abstract</h1>
     <div class="text-justify font-serif">
       {{ page.abstract | markdownify }}
     </div>
@@ -143,7 +152,7 @@ layout: page
 
 
   {% unless striped_content == empty %}
-    <h1>Online material</h1>
+    <h1 id="online-material">Online material</h1>
     <article id="post-content" class="text-justify font-serif">
       {{ page.content }}
     </article>
@@ -176,7 +185,7 @@ layout: page
 
 
   {% if page.bibtex %}
-    <h1>Citation</h1>
+    <h1 id="citation">Citation</h1>
     {% highlight bibtex %}{{ page.bibtex }}{% endhighlight %}
   {% endif %}
 
@@ -185,7 +194,7 @@ layout: page
 
 
   {% if page.members and page.members.size > 0 %}
-    <h1>Related Members</h1>
+    <h1 id="related-members">Related Members</h1>
     {% for member in page.members %}
       {% include member_pill.html member=member %}
     {% endfor %}
