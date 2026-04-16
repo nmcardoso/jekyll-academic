@@ -35,6 +35,22 @@
         accepted <i class="fas fa-check-circle fa-sm"></i>
       </span>
     {% else %}
+      {% if p.date %}
+        {% assign compiled_at = site.time | date: '%s' %}
+        {% assign published_at = p.date | date: '%s' %}
+        {% assign age_seconds = compiled_at | minus: published_at %}
+        {% assign six_months_seconds = 15552000 %}
+
+        {% if age_seconds >= 0 and age_seconds < six_months_seconds %}
+          <span 
+            class="{{ base_class }} bg-warning-subtle border-warning-subtle text-warning-emphasis"
+            data-bs-toggle="tooltip"
+            data-bs-title="Published in the last 6 months">
+            recently published
+          </span>
+        {% endif %}
+      {% endif %}
+      
       {% assign cite = site.data.lattes_citation[p.doi] %}
       {% if cite.wos %}
         <span 
