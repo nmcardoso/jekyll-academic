@@ -47,6 +47,7 @@ social:
 livereload: true
 markdown: kramdown
 highlighter: rouge
+future: true
 
 # teaser: ... (500x300)
 # logo: ...
@@ -154,13 +155,14 @@ defaults:
       type: publications
     values:
       layout: publication
+      masterhead: false
       dimensions:
         enabled: true
         hide_uncited: true
         style: medium_circle
-        legend: hover-bottom
+        legend: always
       altmetric:
-        enabled: true
+        enabled: false
         hide_uncited: true
         style: medium-donut
         popover: bottom
