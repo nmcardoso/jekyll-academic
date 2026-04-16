@@ -45,13 +45,13 @@ layout: page
     </div>
     
     {% if page.altimetric.enabled or page.dimensions.enabled %}
-      <div class="col-lg-auto">
+      <div class="col-lg-auto d-none" id="external-citations-badges">
         <p 
           class="border-bottom text-uppercase fw-light fs-6 mb-2"
           style="letter-spacing: 0.2rem;">
           Citations
         </p>
-        <div id="external-citations-badges" class="d-flex gap-4">
+        <div class="d-flex gap-4">
           {% if page.altmetric.enabled %}
             <div>
               {% include publication_altmetric_badge.html %}
@@ -69,12 +69,12 @@ layout: page
 
   <script type="text/javascript">
     window.addEventListener('load', () => {
-      const empty = [
+      const show = [
         {% if page.dimensions.enabled %}document.querySelector('span.__dimensions_badge_embed__'),{% endif %}
         {% if page.altmetric.enabled %}document.querySelector('div.altmetric-embed'),{% endif %}
-      ].map(e => e === null || e?.childElementCount === 0).every(Boolean)
-      if (empty) {
-        document.getElementById('external-citations-badges')?.parentElement?.remove()
+      ].map(e => !!e && e?.childElementCount > 0).some(Boolean)
+      if (show) {
+        document.getElementById('external-citations-badges').classList.remove('d-none')
       }
     })
   </script>
