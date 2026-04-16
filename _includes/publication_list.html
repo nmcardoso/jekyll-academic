@@ -5,7 +5,7 @@
 {% endif %}
 
 {% if all_publications.size > 0 %}
-  {% assign groups = all_publications | group_by: 'year' | sort: 'name' | reverse %}
+  {% assign groups = all_publications | group_by_exp: 'pub', 'pub.date | date: "%Y"' | sort: 'name' | reverse %}
   {% assign c = 1 %}
   {% for group in groups %}
     {% assign publications = group.items | sort: 'date' | reverse %}

@@ -3,7 +3,7 @@ title: "Dummy Publication 05: End-to-End UI Coverage"
 venue: pami
 authors: |
   Diego M Rocha, Carla P Pereira, Gabriela V Castro and Bruno R Silva
-year: 2023
+date: 2023-12-31
 pdf: https://example.org/dummy-publication-05.pdf
 ads: https://ui.adsabs.harvard.edu/abs/2026dummy0005/abstract
 files:

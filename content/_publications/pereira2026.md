@@ -3,7 +3,7 @@ title: "Dummy Publication 04: Complete Frontmatter Example"
 venue: apj
 authors: |
   Carla P Pereira, Gabriela V Castro, Ana M Ferreira and Felipe G Lima
-year: 2026
+date: 2026-12-31
 status: submitted
 pdf: https://example.org/dummy-publication-04.pdf
 ads: https://ui.adsabs.harvard.edu/abs/2026dummy0004/abstract

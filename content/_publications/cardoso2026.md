@@ -3,7 +3,7 @@ title: "AstroInspect: a web-based system to organize, assess, and visually inspe
 venue: Astronomical Journal
 authors: |
   Natanael M. Cardoso, Claudia Mendes de Oliveira, Angela C. Krabbe, Analia V. Smith Castelli, Gustavo B. Oliveira Schwarz, Lilianne Nakazono, Ricardo Demarco, Maiara S. Carvalho, William Schoenell, Tiago Ribeiro, Antonio Kanaan and Antonio M. Saraiva
-year: 2026
+date: 2026-03-14
 status: accepted
 image: https://natanael.net/files/cardoso2026/astroinspect_ui.jpg
 masterhead: false

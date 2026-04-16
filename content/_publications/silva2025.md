@@ -3,7 +3,7 @@ title: "Dummy Publication 03: Markdown and Components"
 venue: Archive of Dummy Results
 authors: |
   Bruno R Silva, Diego M Rocha, Elisa F Souza and Felipe G Lima
-year: 2025
+date: 2025-12-31
 pdf: https://example.org/dummy-publication-03.pdf
 ads: https://ui.adsabs.harvard.edu/abs/2026dummy0003/abstract
 files:

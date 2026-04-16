@@ -1,5 +1,5 @@
 {% assign n = include.n | default: 3 | at_most: site.publications.size %}
-{% assign publications = site.publications | sort: 'year', 'last' | reverse %}
+{% assign publications = site.publications | sort: 'date', 'last' | reverse %}
 
 {% for pub in publications limit: n %}
   <div class="mb-3">

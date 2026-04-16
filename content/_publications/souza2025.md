@@ -3,7 +3,7 @@ title: "Dummy Publication 02: Layout Stress Scenario"
 venue: Proceedings of Synthetic Experiments
 authors: |
   Elisa F Souza, Felipe G Lima, Gabriela V Castro and Ana M Ferreira
-year: 2025
+date: 2025-12-31
 pdf: https://example.org/dummy-publication-02.pdf
 ads: https://ui.adsabs.harvard.edu/abs/2026dummy0002/abstract
 files:

@@ -3,7 +3,7 @@ title: "Dummy Publication 01: Multi-Element Rendering Test"
 venue: aj
 authors: |
   Ana M Ferreira, Bruno R Silva, Carla P Pereira and Diego M Rocha
-year: 2024
+date: 2024-12-31
 status: submitted
 doi: 10.1093/mnras/stab1981
 pdf: https://example.org/dummy-publication-01.pdf
