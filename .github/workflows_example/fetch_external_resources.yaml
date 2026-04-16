@@ -1,0 +1,81 @@
+name: Fetch External Resources
+
+on:
+  schedule:
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+    inputs:
+      cache_duration:
+        description: Cache duration in days
+        required: false
+        default: '7'
+      script_url:
+        description: Raw URL of scripts/fetch_external.py
+        required: false
+        default: https://raw.githubusercontent.com/nmcardoso/jekyll-academic/main/scripts/fetch_external.py
+  push:
+    paths:
+      - .github/workflows/fetch_external_resources.yaml
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-external:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Resolve runtime variables
+        id: vars
+        shell: bash
+        run: |
+          CACHE_DURATION="${{ github.event.inputs.cache_duration }}"
+          SCRIPT_URL="${{ github.event.inputs.script_url }}"
+
+          if [ -z "$CACHE_DURATION" ]; then
+            CACHE_DURATION="30"
+          fi
+
+          if [ -z "$SCRIPT_URL" ]; then
+            SCRIPT_URL="https://raw.githubusercontent.com/nmcardoso/jekyll-academic/main/scripts/fetch_external.py"
+          fi
+
+          echo "cache_duration=$CACHE_DURATION" >> "$GITHUB_OUTPUT"
+          echo "script_url=$SCRIPT_URL" >> "$GITHUB_OUTPUT"
+
+      - name: Run remote fetch script (all functions)
+        shell: bash
+        run: |
+          uv --version
+          uv run "${{ steps.vars.outputs.script_url }}" --root "$GITHUB_WORKSPACE" jcr-lattes -c "${{ steps.vars.outputs.cache_duration }}"
+          uv run "${{ steps.vars.outputs.script_url }}" --root "$GITHUB_WORKSPACE" citations-lattes -c "${{ steps.vars.outputs.cache_duration }}"
+          uv run "${{ steps.vars.outputs.script_url }}" --root "$GITHUB_WORKSPACE" citations-openalex -c "${{ steps.vars.outputs.cache_duration }}"
+
+      - name: Detect changes in generated data files
+        id: changes
+        shell: bash
+        run: |
+          git add _data/lattes_jcr.yml _data/lattes_citation.yml _data/openalex_citation.yml
+
+          if git diff --cached --quiet -- _data/lattes_jcr.yml _data/lattes_citation.yml _data/openalex_citation.yml; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push updated resources
+        if: steps.changes.outputs.changed == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(data): update external resources"
+          git push

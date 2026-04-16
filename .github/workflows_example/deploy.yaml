@@ -1,0 +1,89 @@
+name: Jekyll
+
+on: 
+  push:
+    branches: 
+      - main
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v6
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '3.4'
+        bundler-cache: true
+    # - uses: actions/setup-python@v1
+    #   with:
+    #     python-version: '3.x'
+    # - uses: actions/cache@v5
+    #   id: pipcache
+    #   with:
+    #     path: '~/.cache/pip'
+    #     key: ${{ runner.os }}-pip3-${{ hashFiles('requirements.txt') }}
+    # - uses: actions/cache@v5
+    #   id: gemcache
+    #   with:
+    #     path: vendor/bundle
+    #     key: ${{ runner.os }}-gem-${{ hashFiles('Gemfile.lock') }}
+    
+    # Pre-build
+    - name: 'Ruby: Install Bundler'
+      run: |
+        gem install bundler -v '4.0.6'
+
+    - name: 'Ruby: Install Dependencies'
+      # if: steps.gemcache.outputs.cache-hit != 'true'
+      run: |
+        bundle config set deployment true
+        bundle config set frozen false
+        bundle install
+        bundle update jekyll-academic
+    
+    # - name: 'Python: Install Dependencies'
+    #   if: steps.pipcache.outputs.cache-hit != 'true'
+    #   run: |
+    #     pip3 install -r requirements.txt -t ~/.cache/pip --upgrade
+
+    # - name: 'Jupyter Notebooks: Compile'
+    #   run: |
+    #     export PYTHONPATH=$PYTHONPATH:/home/runner/.cache/pip/
+    #     export JUPYTER_DATA_DIR=/home/runner/.cache/pip/share/jupyter
+    #     ~/.cache/pip/bin/jupyter nbconvert --output-dir='./notebooks' --to html --template lab assets/uploads/*.ipynb
+
+    # Build
+    - name: 'Jekyll: Build'
+      run: |
+        export PATH=`pwd`/vendor/bundle/ruby/3.4.0/bin:$PATH
+        export GEM_PATH=`pwd`/vendor/bundle/ruby/3.4.0:$GEM_PATH
+        export GEM_HOME=`pwd`/vendor/bundle/ruby/3.4.0:$GEM_HOME
+        JEKYLL_ENV=production bundle exec jekyll build --destination site
+    
+    # Deploy to GH Pages
+    # - name: 'Github Pages: Deploy'
+    #   run: |
+    #     git config --global user.email "actions@github.com"
+    #     git config --global user.name "Github Actions"
+    #     cd site
+    #     git init
+    #     git add .
+    #     git commit --quiet -m ":rocket: Deploy to Github Pages"
+    #     git push --force --quiet "https://nmcardoso:${{ secrets.GITHUB_TOKEN }}@github.com/splus-scale/splus-scale.github.io.git" master:master
+        
+    - name: Deploy to Github Pages
+      uses: peaceiris/actions-gh-pages@v4
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site
+        force_orphan: true
+        cname: natanael.net
+        # personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        # deploy_key: ${{ secrets.DEPLOY_KEY }}
+        # external_repository: splus-scale/splus-scale.github.io
