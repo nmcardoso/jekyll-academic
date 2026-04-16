@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-academic"
-  spec.version       = "0.3.1"
+  spec.version       = "0.4.0"
   spec.authors       = ["Natanael M. Cardoso"]
   spec.email         = ["contact@natanael.net"]
 
