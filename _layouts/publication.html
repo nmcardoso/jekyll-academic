@@ -26,8 +26,8 @@ layout: page
 
       {% if pub_buttons.size > 0 %}
         <p 
-          class="border-bottom text-uppercase fw-light fs-6 mb-2" 
-          style="letter-spacing: 0.2rem;">
+          class="border-bottom text-uppercase fw-light mb-2" 
+          style="letter-spacing: 0.2rem; font-size: small;">
           Access
         </p>
         {{ pub_buttons }}
@@ -36,8 +36,8 @@ layout: page
 
       {% if page.doi %}
         <p 
-          class="border-bottom text-uppercase fw-light fs-6 mb-2 mt-3"
-          style="letter-spacing: 0.2rem;">
+          class="border-bottom text-uppercase fw-light mb-2 mt-3"
+          style="letter-spacing: 0.2rem; font-size: small;">
           Share
         </p>
         {% include share_buttons.html %}
@@ -47,8 +47,8 @@ layout: page
     {% if page.altimetric.enabled or page.dimensions.enabled %}
       <div class="col-lg-auto d-none" id="external-citations-badges">
         <p 
-          class="border-bottom text-uppercase fw-light fs-6 mb-2"
-          style="letter-spacing: 0.2rem;">
+          class="border-bottom text-uppercase fw-light mb-2"
+          style="letter-spacing: 0.2rem; font-size: small;">
           Citations
         </p>
         <div class="d-flex gap-4">
