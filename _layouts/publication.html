@@ -10,42 +10,51 @@ layout: page
 
   <p class="text-secondary-emphasis mb-1">{{ page.authors }}</p>
 
-  <p class="text-muted mb-1">{{ page.venue | venue_name }}</p>
+  <p class="text-muted mb-1">{{ page.venue | venue_name }}, {{ page.date | date: "%Y" }}</p>
 
-  <p class="text-secondary mb-1"><i class="far fa-clock fa-sm"></i> {{ page.date | date: "%Y" }}</p>
+  {% if page.doi %}
+    <p class="text-muted mb-1 fs-6">DOI: {{ page.doi }}</p>
+  {% endif %}
 
   {% include publication_status_badge.html publication=page %}
 
   <div class="row mt-3">
     <div class="col">
-      {% capture pub_buttons %}
-        {% include publication_access_buttons.html %}
-      {% endcapture %}
+      <div class="row" id="publication-buttons">
+        {% capture pub_buttons %}
+          {% include publication_access_buttons.html %}
+        {% endcapture %}
 
-      {% assign pub_buttons = pub_buttons | strip %}
+        {% assign pub_buttons = pub_buttons | strip %}
 
-      {% if pub_buttons.size > 0 %}
-        <p 
-          class="border-bottom text-uppercase fw-light mb-2" 
-          style="letter-spacing: 0.2rem; font-size: small;">
-          Access
-        </p>
-        {{ pub_buttons }}
-      {% endif %}
-      
-
-      {% if page.doi %}
-        <p 
-          class="border-bottom text-uppercase fw-light mb-2 mt-3"
-          style="letter-spacing: 0.2rem; font-size: small;">
-          Share
-        </p>
-        {% include share_buttons.html %}
-      {% endif %}
+        {% if pub_buttons.size > 0 %}
+          <div class="col-12 col-lg mb-3">
+            <p 
+              class="border-bottom text-uppercase fw-light mb-2" 
+              style="letter-spacing: 0.2rem; font-size: small;">
+              Access
+            </p>
+            <div class="d-inline-flex flex-wrap gap-2 align-items-center">
+              {{ pub_buttons }}
+            </div>
+          </div>
+        {% endif %}
+          
+        {% if page.doi %}
+          <div class="col-12 col-lg">
+            <p 
+              class="border-bottom text-uppercase fw-light mb-2"
+              style="letter-spacing: 0.2rem; font-size: small;">
+              Share
+            </p>
+            {% include share_buttons.html %}
+          </div>
+        {% endif %}
+      </div>
     </div>
-    
+
     {% if page.altimetric.enabled or page.dimensions.enabled %}
-      <div class="col-lg-auto d-none" id="external-citations-badges">
+      <div class="col-lg-auto d-none mt-3 mt-lg-0" id="external-citations-badges">
         <p 
           class="border-bottom text-uppercase fw-light mb-2"
           style="letter-spacing: 0.2rem; font-size: small;">
@@ -68,14 +77,51 @@ layout: page
   </div>
 
   <script type="text/javascript">
-    window.addEventListener('load', () => {
+    const updateExternalCitationsBadgesVisibility = () => {
       const show = [
         {% if page.dimensions.enabled %}document.querySelector('span.__dimensions_badge_embed__'),{% endif %}
         {% if page.altmetric.enabled %}document.querySelector('div.altmetric-embed'),{% endif %}
       ].map(e => !!e && e?.childElementCount > 0).some(Boolean)
+
       if (show) {
-        document.getElementById('external-citations-badges').classList.remove('d-none')
+        document.getElementById('external-citations-badges')?.classList?.remove('d-none')
+        document.querySelectorAll('#publication-buttons .col-lg').forEach(e => {
+          e.classList.remove('col-lg')
+        })
       }
+
+      return show
+    }
+
+    window.addEventListener('load', () => {
+      if (updateExternalCitationsBadgesVisibility()) {
+        return
+      }
+
+      const observedBadge = document.getElementById('external-citations-badges')
+      if (!observedBadge) {
+        return
+      }
+
+      let frameQueued = false
+      const observer = new MutationObserver(() => {
+        if (frameQueued) {
+          return
+        }
+
+        frameQueued = true
+        requestAnimationFrame(() => {
+          frameQueued = false
+          if (updateExternalCitationsBadgesVisibility()) {
+            observer.disconnect()
+          }
+        })
+      })
+
+      observer.observe(observedBadge, {
+        childList: true,
+        subtree: true,
+      })
     })
   </script>
 
